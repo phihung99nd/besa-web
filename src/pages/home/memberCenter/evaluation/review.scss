@@ -1,0 +1,175 @@
+//style phần cảnh báo_________________________________________________________
+.note {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 5px 10px;
+  align-items: center;
+  gap: 10px;
+  background: #ebb434;
+  color: #fff;
+}
+
+//style phần thông tin sản phẩm______________________________________________
+.product-content {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
+
+  > .product-img img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+}
+
+//style phần nội dung review_____________________________________________
+.review-content {
+  display: flex;
+  flex-direction: column;
+  // phần sao đánh giá
+  .rating {
+    text-align: center;
+  }
+
+  // phần tag reply có sẵn
+  .tag {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-self: center;
+    width: 90%;
+    gap: 5px;
+
+    > .chip {
+      padding: 4px 10px;
+      border-radius: 15px;
+      border: 1px solid #9c9c9c;
+      width: fit-content;
+      overflow: hidden;
+      position: relative;
+
+      &:hover {
+        cursor: pointer;
+        background: #eee;
+      }
+
+      &:active {
+        background: #9c9c9c;
+      }
+    }
+  }
+
+  // phần nhập nội dung comment
+  .comment {
+    > span {
+      color: #999;
+    }
+  }
+
+  // phần ẩn danh
+  .anonymous {
+    border-top: 1px solid #e8eaec;
+    border-bottom: 1px solid #e8eaec;
+    padding: 8px 0;
+
+    > .helper-text {
+      color: #999;
+    }
+  }
+
+  // phần tải lên hình ảnh và video
+  .media {
+    display: flex;
+    flex-flow: row nowrap;
+
+    .upload-list {
+      &_image {
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        display: inline-block;
+        margin-right: 4px;
+        background: #fff;
+        position: relative;
+        vertical-align: bottom;
+
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        &:hover .upload-list-cover {
+          display: flex;
+        }
+      }
+
+      &_video {
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        display: inline-block;
+        margin-right: 4px;
+        background: #fff;
+        position: relative;
+        vertical-align: bottom;
+
+        > video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        &:hover .upload-list-cover {
+          display: flex;
+        }
+
+        &:hover .upload-list-cover.play {
+          display: none;
+        }
+      }
+
+      &-cover {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        div {
+          margin-top: 15px;
+          width: 100%;
+
+          > i {
+            width: 50%;
+            margin-top: 8px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+
+            &:hover {
+              color: $accent_color;
+            }
+          }
+        }
+      }
+
+      &-cover.play {
+        display: flex;
+
+        div {
+          margin-top: 7px;
+        }
+      }
+    }
+  }
+}

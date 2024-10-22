@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>BESA - Đặt lịch dễ dàng</title>
+    <link rel="icon" type="image/png" href="./favicon.png"></link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      .page-loading-wrap {
+        padding: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .loader {
+        position: relative;
+        width: 100px;
+        height: 130px;
+        background: #9fe7d4;
+        border-radius: 4px;
+      }
+      .loader:before{
+        content: '';
+        position: absolute;
+        width: 54px;
+        height: 25px;
+        left: 50%;
+        top: 0;
+        background-image:
+          radial-gradient(ellipse at center, #0000 24%,#1a9879 25%,#1a9879 64%,#0000 65%),
+          linear-gradient(to bottom, #0000 34%,#1a9879 35%);
+        background-size: 12px 12px , 100% auto;
+        background-repeat: no-repeat;
+        background-position: center top;
+        transform: translate(-50% , -65%);
+        box-shadow: 0 -3px rgba(0, 0, 0, 0.25) inset;
+      }
+      .loader:after{
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translateX(-50%);
+        width: 66%;
+        height: 60%;
+        background: linear-gradient(to bottom, #23caa1 30%, #0000 31%);
+        background-size: 100% 16px;
+        animation: writeDown 2s ease-out infinite;
+      }
+
+      @keyframes writeDown {
+        0% { height: 0%; opacity: 0;}
+        20%{ height: 0%; opacity: 1;}
+        80% { height: 65%; opacity: 1;}
+        100% { height: 65%; opacity: 0;}
+      }
+
+    </style>
+  </head>
+  <body>
+  <noscript>
+    <strong>
+      Besa - ứng dụng đặt lịch trực tuyến thú vị, tin cậy, an toàn và miễn phí! Besa là nền tảng giao dịch trực tuyến có trụ sở chính ở Việt Nam. Với sự đảm bảo của Besa, bạn sẽ đặt lịch trực tuyến các dịch vụ an tâm và nhanh chóng hơn bao giờ hết!.
+    </strong>
+  </noscript>
+    <div id="app">
+      <div class="page-loading-wrap">
+        <!--        <div class="half-circle-spinner">-->
+        <!--          <div class="circle circle-1"></div>-->
+        <!--          <div class="circle circle-2"></div>-->
+        <!--        </div>-->
+        <!--        <h4 style="margin-top:20px;">Loading...</h4>-->
+        <span class="loader"></span>
+      </div>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  bono-web:
+    image: <DEV_IMAGE_NAME>
+    # build: .
+    ports:
+      - 10001:10000
+    networks:
+      - bono-new
+      - proxy-tier
+    deploy:
+#      restart_policy:
+#        condition: any
+#        max_attempts: 0
+      placement:
+        constraints:
+          - "node.labels.net.microtech.nodename==node87"
+      replicas: 1
+      labels:
+        traefik.enable: "true"
+        traefik.docker.network: proxy-ovl-net
+        traefik.constraint-label: traefik-edge-nxrm2
+        traefik.docker.lbswarm: "true"
+        ## redirect http to https
+        traefik.http.routers.bono-insecure.entrypoints: "web"
+        traefik.http.routers.bono-insecure.rule: "Host(`bono.micro-tech.com.vn`)"
+        traefik.http.routers.bono-insecure.middlewares: "redirect-to-https@file"
+        traefik.http.routers.bono-insecure.service: "noop@internal"
+
+        traefik.http.routers.bono.entrypoints: "websecure"
+        traefik.http.routers.bono.rule: "Host(`bono.micro-tech.com.vn`)"
+        traefik.http.routers.bono.tls: "true"
+        traefik.http.routers.bono.tls.certresolver: letsencrypt
+        traefik.http.routers.bono.middlewares: "mixedcontent"
+        traefik.http.routers.bono.service: "bono"
+        traefik.http.services.bono.loadbalancer.server.port: 10000
+        traefik.http.middlewares.mixedcontent.headers.contentSecurityPolicy: "upgrade-insecure-requests"
+networks:
+  bono-new:
+  proxy-tier:
+    external: true
+    name: proxy-ovl-net

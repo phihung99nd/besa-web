@@ -1,0 +1,131 @@
+/deep/ .v-dropdown-menu__container {
+  position: absolute;
+
+  &:has(.dropdown-menu:not(.dropdown-submenu)) {
+    animation: slideaway 0.3s;
+  }
+
+  &:has(.dropdown-submenu) {
+    animation: pushin 0.3s;
+  }
+}
+
+/deep/ .v-dropdown-menu__body {
+  position: relative;
+}
+
+/deep/ .dropdown-menu {
+  border-radius: 10px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, .15);
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+
+  &__option {
+    width: 150px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      height: unset;
+    }
+  }
+}
+
+/deep/ .dropdown-submenu {
+  border-radius: 10px;
+  width: fit-content;
+  min-width: 100px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, .15);
+  margin-top: 10px;
+  padding: 10px;
+  position: absolute;
+  top: -54px;
+  left: 165px;
+
+  .scroll {
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  &__option {
+    width: 150px;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      height: unset;
+    }
+  }
+}
+
+.btn {
+  height: 20px;
+  line-height: 18px;
+  width: fit-content;
+  border: none;
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 15px;
+
+  &:hover {
+    color: $accent_color;
+  }
+}
+
+@keyframes slideaway {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    display: block;
+  }
+}
+
+@keyframes pushin {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    display: block;
+  }
+}
